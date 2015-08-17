@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root 'todos#index'
-resources :todos
+  namespace :api do
+    resources :tasks, only:[:index, :create, :show, :update, :destroy]
+  end
 
 
   # Example of regular route:
