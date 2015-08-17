@@ -7,25 +7,41 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Todo.create(name: "Code", completed: Date.new(), recurring_id: 1)
-Todo.create(name: "Code", completed: nil, recurring_id: 1)
-Todo.create(name: "Buy more dogs", completed: Date.new(), recurring_id: 2)
-Todo.create(name: "Buy more dogs", completed: Date.new(), recurring_id: 2)
-Todo.create(name: "Buy more dogs", completed: nil, recurring_id: 2)
-Todo.create(name: "Final project", completed: nil, recurring_id: 3)
-Todo.create(name: "Buy groceries", completed: nil, recurring_id: 4)
-Todo.create(name: "Call cornelius", completed: nil, recurring_id: 5)
-Todo.create(name: "Play with dog", completed: nil, recurring_id: 6)
-Todo.create(name: "Gym", completed: nil, recurring_id: 7)
-Todo.create(name: "Create facebook", completed: nil, recurring_id: 8)
-Todo.create(name: "Walk dog", completed: nil, recurring_id: 9)
+Task.create({
+  description: 'Gym',
+  starts_at: '2014-10-10',
+  repeat_times: 5,
+  repeats_every: "day",
+  })
 
-Recurring.create(times: 10)
-Recurring.create(times: 3)
-Recurring.create(times: 5)
-Recurring.create(times: 1)
-Recurring.create(times: 1)
-Recurring.create(times: 1)
-Recurring.create(times: 1)
-Recurring.create(times: 1)
-Recurring.create(times: 1)
+Completion.create({
+  task_id: 1,
+  completed_at: '2014-10-12'
+  })
+Task.create({
+  description: 'Read',
+  starts_at: '2014-11-10',
+  repeat_times: 1,
+  repeats_every: "day"
+  })
+
+Completion.create({
+  task_id: 2,
+  completed_at: '2014-11-12'
+  })
+
+Task.create({
+  description: 'Salsa Dancing',
+  starts_at: '2014-12-10',
+  repeat_times: 1,
+  repeats_every: "week"})
+
+Completion.create({
+  task_id: 1,
+  completed_at: '2014-12-12'
+  })
+
+
+  
+
+

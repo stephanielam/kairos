@@ -11,28 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814054551) do
+ActiveRecord::Schema.define(version: 20150817222201) do
 
-  create_table "recurrings", force: :cascade do |t|
-    t.integer  "times"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "todos", force: :cascade do |t|
-    t.string   "name"
-    t.date     "completed"
-    t.integer  "recurring_id"
+  create_table "completions", force: :cascade do |t|
+    t.integer  "task_id"
+    t.datetime "completed_at"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "tasks", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "starts_at"
+    t.integer  "repeat_times"
+    t.string   "repeats_every"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

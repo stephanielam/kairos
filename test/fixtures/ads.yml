@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_id: 1
+  description: MyString
+  starts_at: 2015-08-17 15:18:37
+  completed_at: 2015-08-17 15:18:37
+
+two:
+  task_id: 1
+  description: MyString
+  starts_at: 2015-08-17 15:18:37
+  completed_at: 2015-08-17 15:18:37
