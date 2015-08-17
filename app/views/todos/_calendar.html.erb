@@ -1,0 +1,20 @@
+<div id="calendar" class="center" ondragover="allowDrop(event)">
+  <div class="wrap">
+    <img src="images/leftarrow.png" id="prev" class="clickable clicker"><div class="circle"></div></div>
+  <h1 id="date"> AUGUST 10, 2015 </h1>
+  <div class="wrap">
+    <img src="images/rightarrow.png" id="next" class="clickable clicker"><div class="circle"></div></div><br>
+  <button id="today" class="btn-info" >Today</button>
+  <div id="schedule">
+    <table>
+      <tbody>
+        <% 24.times do |time| %>
+        <tr>
+          <td><%= time %>:00</td>
+          <td class="todo">[TODO]</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

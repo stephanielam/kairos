@@ -1,0 +1,25 @@
+<div id="braindump" class="center">
+  <h1 id="title"> Kairos </h1><br>
+  <h1>B R A I N D U M P</h1>
+<%= form_for Todo.new do |f| %>
+<div>
+  <%= f.text_field :name %>
+</div>
+<div>
+  <%= f.label :recurring %>
+  <%= f.check_box :recurring %>
+</div>
+<%= submit_tag "ADD" %>
+<% end %>
+<button id="clear">Clear Done</button>
+  <ul id="braindumptodos" ondragover="allowDrop(event)">
+    <% @todos.each do |todo| %>
+      <% if todo.completed.nil? %>
+      <li class="todo" draggable="true" ondragstart="drag(event)" > <%= todo.name %> </li>
+      <% end %>
+    <% end %>
+
+  </ul>
+</div>
+<div id="droparrow" class="clickable"></div>
+<!-- <img src="images/logowhite.png" id="logo"> -->

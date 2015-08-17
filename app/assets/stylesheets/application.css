@@ -1,0 +1,170 @@
+#braindump {
+  background: url("../images/stripebackground.png");
+  width: 40%;
+  position: fixed;
+  height: 100%;
+  bottom: 520px;
+  left: -280px;
+  text-align: center;
+  margin: 0 auto;
+  z-index: 1;
+  color: black;
+  opacity: 0.8;
+  transition: all 0.8s ease;
+  opacity: 0;
+  -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  -ms-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+
+#braindump:hover{
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.78;
+}
+
+body {
+  color: white;
+  font-family: "Roboto", "Open Sans", "Helvetica Neue";
+  background: black url("../../images/background.jpg") fixed;
+  background-size: cover;
+}
+
+h1 {
+  margin: 0px;
+  display: inline-block;
+  color: white;
+}
+
+#content {
+  margin: 2% 8%;
+}
+
+#calendar {
+  position: fixed;
+  padding-left: 20px;
+  width: 470px;
+}
+
+#schedule {
+  overflow: auto;
+  height: 470px;
+  padding: 10px;
+}
+
+#progress {
+  float: right;
+  overflow: auto;
+  height: 100%;
+  width: 40%;
+  padding: 20px;
+}
+
+li {
+  list-style-type: none;
+  font-size: 18px;
+  background: white;
+  width: 70%;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+#braindumptodos {
+  overflow:auto;
+  height: 60%;
+  padding: 10px;
+}
+
+.done {
+  text-decoration: line-through;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.3));
+}
+
+.blur {
+  -webkit-filter: blur(13px);
+  -moz-filter: blur(13px);
+  -o-filter: blur(13px);
+  -ms-filter: blur(13px);
+  filter: blur(13px);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+table {
+  margin: 10px;
+  color: black;
+  background: rgb(246, 248, 255);
+  background: -moz-linear-gradient(90deg, rgb(246, 248, 255) 0%, rgb(191, 218, 250) 100%);
+  background: -webkit-linear-gradient(90deg, rgb(246, 248, 255) 0%, rgb(191, 218, 250) 100%);
+  background: -o-linear-gradient(90deg, rgb(246, 248, 255) 0%, rgb(191, 218, 250) 100%);
+  background: -ms-linear-gradient(90deg, rgb(246, 248, 255) 0%, rgb(191, 218, 250) 100%);
+  background: linear-gradient(180deg, rgb(246, 248, 255) 0%, rgb(191, 218, 250) 100%);
+  text-align: left;
+  font-size: 16px;
+  font-family: Century Gothic;
+  margin-left: 5%;
+  width: 90%;
+}
+
+td {
+  padding: 5px 23px;
+}
+
+.wrap{  
+  position: relative;
+  width: 80px;
+  height: 50px;
+  display: inline-block;
+}
+
+.clicker{
+  position: absolute;
+  background: #252525;
+  border: none;
+  height: 64px;
+  width: 64px;
+  left: 8px;
+  top: 8px;
+  border-radius: 100px;
+  z-index: 2;
+}
+
+.circle{
+  border-radius:40px;
+  width: 80px;
+  height: 80px;
+}
+
+.clicker:hover + .circle {
+  animation: rotator linear .9s infinite;
+  background-image: linear-gradient(45deg, 
+    black 0%,
+    black 30%,
+    rgb(20,190,235) 30%,
+    rgb(20,190,235) 70%, 
+    black 70%, 
+    black 100%
+    );
+}
+
+#title {
+  padding: 20px;
+}
+
+#braindump>h1 {
+  padding-top:10px;
+}
+
+@keyframes rotator{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
