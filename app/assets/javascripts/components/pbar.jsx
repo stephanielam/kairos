@@ -14,9 +14,9 @@ var Pbar = React.createClass({
   },
   render: function(){
     var activity = this.props.activity
-    var progress = this.props.progress
+    var progress = this.props.activity.percent
     var pbarStyles = {
-      width: this.props.progress + '%'
+      width: progress + '%'
     }
     if (progress >= 95){
       var status = "success"
@@ -31,11 +31,11 @@ var Pbar = React.createClass({
 
     return (
       <div className="todo-progress">
-        <h2>{activity[0]}
+        <h2>{activity.description}
         </h2>
         <div className="progress">
           <div className={"progress-bar progress-bar-striped active progress-bar-"+status} role="progressbar" style={pbarStyles}>
-          {activity[2]}%
+          {activity.percent}%
           </div>
           
         </div>
