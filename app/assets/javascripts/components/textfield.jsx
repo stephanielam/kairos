@@ -1,4 +1,4 @@
-var React = require('react');
+// var React = require('react');
 
 var Textfield = React.createClass({
   handleChange: function(e){
@@ -14,4 +14,4 @@ var Textfield = React.createClass({
     )}
 });
 
-module.exports = Textfield;
+// module.exports = Textfield;

@@ -1,5 +1,5 @@
-var React = require('react');
-var Braindump = require('./braindump');
+// var React = require('react');
+// var Braindump = require('./braindump');
 
 var Header = React.createClass({
   show: function(event){
@@ -16,4 +16,4 @@ var Header = React.createClass({
       )}
   });
 
-  module.exports = Header;
+  // module.exports = Header;

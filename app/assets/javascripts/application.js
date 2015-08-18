@@ -15,60 +15,72 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
+//= require components/header
+//= require components/navbar
+//= require components/column
+//= require components/calendar
+//= require components/progress
+//= require components/braindump
+//= require components/textfield
+//= require components/list
+//= require components/todoitem
+//= require components/pbar
 //= require components
+
 //= require_tree .
 
-$(document).ready(function(){
-  console.log("script included");
 
-  date = new Date();
-  $("#date").html(date.toDateString())
+// $(document).ready(function(){
+//   console.log("script included");
 
-  $("#braindump").hover(function(){
-    $("#calendar").addClass("blur");
-    $("#progress").addClass("blur");
-  }, function(){
-    $("#calendar").removeClass("blur");
-    $("#progress").removeClass("blur");
-  });
+//   date = new Date();
+//   $("#date").html(date.toDateString())
 
-  $("#clear").on("click", function(){
-    // Todo.all.selesct {|todo| !(todo.completed) }
-  });
+//   $("#braindump").hover(function(){
+//     $("#calendar").addClass("blur");
+//     $("#progress").addClass("blur");
+//   }, function(){
+//     $("#calendar").removeClass("blur");
+//     $("#progress").removeClass("blur");
+//   });
 
-  $("#next").on("click", function(){
-    date.setDate(date.getDate() + 1);
-    $("#date").html(date.toDateString())
-  })
+//   $("#clear").on("click", function(){
+//     // Todo.all.selesct {|todo| !(todo.completed) }
+//   });
 
-  $("#prev").on("click", function(){
-    date.setDate(date.getDate() - 1);
-    $("#date").html(date.toDateString())
-  })
+//   $("#next").on("click", function(){
+//     date.setDate(date.getDate() + 1);
+//     $("#date").html(date.toDateString())
+//   })
 
-  $("#today").on("click", function(){
-    date = new Date();
-    $("#date").html(date.toDateString())
-  })
+//   $("#prev").on("click", function(){
+//     date.setDate(date.getDate() - 1);
+//     $("#date").html(date.toDateString())
+//   })
 
-  $('.todo').on("click", function(){
-    $(this).toggleClass("done");
-  })
+//   $("#today").on("click", function(){
+//     date = new Date();
+//     $("#date").html(date.toDateString())
+//   })
 
-  function allowDrop(ev) {
-    ev.preventDefault();
-  }
+//   $('.todo').on("click", function(){
+//     $(this).toggleClass("done");
+//   })
 
-  function drag(ev) {
-    $("#calendar").removeClass("blur")
-    $("#progress").removeClass("blur")
-    ev.dataTransfer.setData("text", ev.target.id);
-  }
+//   function allowDrop(ev) {
+//     ev.preventDefault();
+//   }
 
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-  }
+//   function drag(ev) {
+//     $("#calendar").removeClass("blur")
+//     $("#progress").removeClass("blur")
+//     ev.dataTransfer.setData("text", ev.target.id);
+//   }
 
-});
+//   function drop(ev) {
+//     ev.preventDefault();
+//     var data = ev.dataTransfer.getData("text");
+//     ev.target.appendChild(document.getElementById(data));
+//   }
+
+// });

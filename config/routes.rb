@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "home#show"
+
   namespace :api do
     resources :tasks, only:[:index, :create, :show, :update, :destroy]
   end

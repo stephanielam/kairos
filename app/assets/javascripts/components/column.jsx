@@ -1,4 +1,4 @@
-var React = require('react');
+// var React = require('react');
 
 var Column = React.createClass({
   render: function(){
@@ -10,4 +10,4 @@ var Column = React.createClass({
   )}
 });
 
-module.exports = Column;
+// module.exports = Column;
