@@ -7,7 +7,6 @@ var TodoItem = React.createClass({
     }
   },
  handleCheck: function(id){
-    console.log("POST /api/tasks/"+this.props.todo.id)
     var temp = "done"
     var temp2 = ""
     var start = new Date()
@@ -16,14 +15,14 @@ var TodoItem = React.createClass({
       temp2 = "images/clock.png"
       start = null
     }
-
+    console.log("POST /api/tasks/"+this.props.todo.id)
     $.ajax({
       // TODO
-      type: 'POST',
+      type: 'PATCH',
       url: 'api/tasks/'+this.props.todo.id,
       data: {
         task: {
-          startTime: start
+          starts_at: start
         }
       },
       dataType: 'json',
