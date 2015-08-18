@@ -35,15 +35,17 @@ class Api::TasksController < ApplicationController
   end
 
   def update
-    if tasks.update(task_params)
-      render :show
+    task = Task.find(params[:id])
+    if task.update(task_params)
+      render json: task
     else
-    render json: tasks.errors, status: :unprocessable_entity
+    render json: task.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    Task.destroy
+    task = Task.find(params[:id])
+    task.destroy
     head :no_content
   end
 

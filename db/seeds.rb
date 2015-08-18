@@ -5,8 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
 Task.create({
   description: 'recurring, not braindump',
   starts_at: '2014-10-10T08:00:00.000Z',

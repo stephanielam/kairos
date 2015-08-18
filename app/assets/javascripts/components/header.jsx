@@ -10,7 +10,7 @@ var Header = React.createClass({
   },
   render: function(){
     return (
-      <div id="header" class="center" onMouseOver={this.show} onMouseOut={this.hide}>
+      <div id="header" className="center" onMouseOver={this.show} onMouseOut={this.hide}>
       <Braindump />
       </div>
       )}
