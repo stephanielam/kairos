@@ -9,7 +9,7 @@
 
 Task.create({
   description: 'recurring, not braindump',
-  starts_at: '2014-10-10',
+  starts_at: '2014-10-10T08:00:00.000Z',
   repeat_times: 5,
   })
 
@@ -25,7 +25,7 @@ Completion.create({
 
 Task.create({
   description: 'scheduled, not braindump',
-  starts_at: '2014-11-10'
+  starts_at: '2014-10-10T12:00:00.000Z',
   })
 
 Completion.create({
@@ -35,7 +35,7 @@ Completion.create({
 
 Task.create({
   description: 'Salsa Dancing',
-  starts_at: '2014-12-10',
+  starts_at: '2014-10-10T17:00:00.000Z',
   repeat_times: 1,})
 
 Completion.create({
