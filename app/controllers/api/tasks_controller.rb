@@ -6,11 +6,15 @@ class Api::TasksController < ApplicationController
   end
 
   def braindump
-    tasks = Task.where(starts_at: nil)
+    tasks = Task.where('starts_at IS NULL')
     render json: tasks.to_json(include: :completions)
   end
 
-  
+  def progress
+    tasks = Task.where("starts_at IS NOT NULL")
+    render json: tasks.to_json(include: :completions)
+  end
+
 
   def create
     task = Task.new(task_params)

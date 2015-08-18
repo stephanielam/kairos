@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/braindump' => 'tasks#braindump'
-    resources :tasks, only:[:index, :create, :show, :update, :destroy]
+    get '/progress' => 'tasks#progress'
+     resources :tasks, only:[:index, :create, :show, :update, :destroy]
   end
 
 

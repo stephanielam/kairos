@@ -41,7 +41,15 @@ Completion.create({
   completed_at: '2014-12-12'
   })
 
+Task.create({
+  description: 'Salsa Dancing',
+  repeat_times: 1,
+  repeats_every: "week"})
 
+Completion.create({
+  task_id: 1,
+  completed_at: '2014-12-12'
+  })
   
 
 
