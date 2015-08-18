@@ -1,4 +1,5 @@
-var React = require('react');
+// var React = require('react');
+
 var CalItem = React.createClass({
   getInitialState: function(){
     return {
@@ -25,4 +26,4 @@ var CalItem = React.createClass({
   }
 });
 
-module.exports = CalItem;
+// module.exports = CalItem;

@@ -1,9 +1,9 @@
-var React = require('react');
-var Header = require('./header');
-var Calendar = require('./calendar');
-var Progress = require('./progress');
-var Column = require('./column');
-var Navbar = require('./navbar');
+// var React = require('react');
+// var Header = require('./header');
+// var Calendar = require('./calendar');
+// var Progress = require('./progress');
+// var Column = require('./column');
+// var Navbar = require('./navbar');
 
 var App = React.createClass({
   displayName:"app",
@@ -50,4 +50,4 @@ var App = React.createClass({
   }
 })
 
-module.exports = App;
+// module.exports = App;

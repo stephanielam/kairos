@@ -1,5 +1,5 @@
-var React = require('react');
-var CalItem = require('./calitem');
+// var React = require('react');
+// var CalItem = require('./calitem');
 
 var Calendar = React.createClass({
   getInitialState: function(){
@@ -88,4 +88,4 @@ var Calendar = React.createClass({
   }
 });
 
-module.exports = Calendar;
+// module.exports = Calendar;

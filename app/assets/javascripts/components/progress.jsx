@@ -1,5 +1,5 @@
-var React = require('react');
-var Pbar = require('./pbar');
+// var React = require('react');
+// var Pbar = require('./pbar');
 
 var Progress = React.createClass({
   getInitialState: function(){
@@ -29,4 +29,4 @@ var Progress = React.createClass({
       )}
   });
 
-  module.exports = Progress;
+  // module.exports = Progress;

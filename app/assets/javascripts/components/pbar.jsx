@@ -1,4 +1,4 @@
-var React = require('react');
+// var React = require('react');
 
 var Pbar = React.createClass({
   getInitialState: function(){
@@ -43,4 +43,4 @@ var Pbar = React.createClass({
       )}
   });
 
-  module.exports = Pbar;
+  // module.exports = Pbar;

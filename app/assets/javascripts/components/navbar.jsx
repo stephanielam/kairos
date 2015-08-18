@@ -1,4 +1,4 @@
-var React = require('react');
+// var React = require('react');
 
 var Navbar = React.createClass({
   render: function(){
@@ -15,5 +15,5 @@ var Navbar = React.createClass({
   )}
 });
 
-module.exports = Navbar;
+// module.exports = Navbar;
 

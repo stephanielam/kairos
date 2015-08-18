@@ -1,4 +1,4 @@
-var React = require('react');
+// var React = require('react');
 
 var Todoform= React.createClass({
   getInitialState: function() {
@@ -20,4 +20,4 @@ var Todoform= React.createClass({
       )}
   });
 
-  module.exports = Todoform;
+  // module.exports = Todoform;

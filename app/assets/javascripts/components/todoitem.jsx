@@ -1,4 +1,4 @@
-var React = require('react');
+// var React = require('react');
 var TodoItem = React.createClass({
   getInitialState: function(){
     return {
@@ -33,4 +33,4 @@ var TodoItem = React.createClass({
   }
 });
 
-  module.exports = TodoItem;
+  // module.exports = TodoItem;

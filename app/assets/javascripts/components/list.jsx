@@ -1,5 +1,5 @@
-var React = require('react');
-var TodoItem = require('./todoitem');
+// var React = require('react');
+// var TodoItem = require('./todoitem');
 
 var List = React.createClass({
 
@@ -18,4 +18,4 @@ var List = React.createClass({
   }
 });
 
-module.exports = List;
+// module.exports = List;
