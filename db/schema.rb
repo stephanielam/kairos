@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20150817222201) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "recurrings", force: :cascade do |t|
+    t.integer  "times"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string   "description"
     t.datetime "starts_at"
@@ -27,6 +33,22 @@ ActiveRecord::Schema.define(version: 20150817222201) do
     t.string   "repeats_every"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.string   "name"
+    t.date     "completed"
+    t.integer  "recurring_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
