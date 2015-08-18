@@ -2,17 +2,39 @@
 // var CalItem = require('./calitem');
 
 var Calendar = React.createClass({
+  componentDidMount: function(){
+    // TODO: set todos to todays dates todos
+    // GET tasks/?startdate=this.state.date
+    $.ajax({
+      type: 'GET',
+      url: 'api/tasks',
+      success: function(todo_data) {
+        var temp = []
+        for (i=0; i < 24; i++){
+          for (j=0; j < todo_data.length; j++){
+            // TODO: if todo_data[j].startTime == j
+            if (true) {
+              temp.push(todo_data[j].starts_at)
+            } else {
+              temp.push(null)
+            }
+          }
+        }
+        this.setState({
+          todos: todo_data,
+          array: temp
+        })
+      }.bind(this)
+    })
+  },
   getInitialState: function(){
     return {
       date: new Date(),
       startTime: 0,
       endTime: 24,
-      // GET tasks/?startdate=true
-      todos: [{name: "todo1", startTime: 8},{name: "todo2", startTime: 8},{name: "todo3", startTime: 8}]
+      todos: [],
+      array: []
     }
-  },
-  blur: function(event){
-    console.log("blur")
   },
   back: function(event){
     console.log("back")
@@ -49,16 +71,17 @@ var Calendar = React.createClass({
     var start = this.state.startTime
     var end = this.state.endTime
     var todos = this.state.todos
+    var array = this.state.array
     var columnStyle = {
       width: 10 + '%'
     }
     var table = hours.map(function (hour, index) {
       if (index > start && index < end) {
-        return <tr><td style={columnStyle}>{hour}</td>
+        return <tr><td style={columnStyle} >{hour}</td>
         <td className="todo" key={index}>
-          {index}
+          {array[index]}
         </td>
-        <td style={columnStyle}>edit</td></tr>
+        </tr>
       }
     })
 

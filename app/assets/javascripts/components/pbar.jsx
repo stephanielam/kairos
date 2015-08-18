@@ -31,11 +31,11 @@ var Pbar = React.createClass({
 
     return (
       <div className="todo-progress">
-        <h2>{activity}
+        <h2>{activity[0]}
         </h2>
         <div className="progress">
           <div className={"progress-bar progress-bar-striped active progress-bar-"+status} role="progressbar" style={pbarStyles}>
-          {progress}%
+          {activity[2]}%
           </div>
           
         </div>
