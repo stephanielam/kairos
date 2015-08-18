@@ -15,7 +15,6 @@ class Api::TasksController < ApplicationController
     render json: tasks.to_json(include: :completions)
   end
 
-
   def create
     task = Task.new(task_params)
     if task.save

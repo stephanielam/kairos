@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     get '/braindump' => 'tasks#braindump'
     get '/progress' => 'tasks#progress'
+    get '/calendar' => 'completions#calendar'
     resources :tasks, only:[:index, :create, :show, :update, :destroy]
     resources :completions, only:[:index, :create, :show, :update, :destroy]
   end
