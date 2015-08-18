@@ -45,12 +45,12 @@ class Api::CompletionsController < ApplicationController
   # private
 
   # def task_params
-  #   params.require(:task).permit(:description, :starts_at, :repeat_times, :repeats_every)
+  #   params.require(:task).permit(:description, :starts_at, :repeat_times)
   # end
 
 
 
 
 
-  
+
 end

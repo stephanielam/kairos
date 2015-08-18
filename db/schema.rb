@@ -24,9 +24,8 @@ ActiveRecord::Schema.define(version: 20150817222201) do
     t.string   "description"
     t.datetime "starts_at"
     t.integer  "repeat_times"
-    t.string   "repeats_every"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

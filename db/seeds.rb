@@ -8,21 +8,24 @@
 
 
 Task.create({
-  description: 'Gym',
+  description: 'recurring, not braindump',
   starts_at: '2014-10-10',
   repeat_times: 5,
-  repeats_every: "day",
   })
 
 Completion.create({
   task_id: 1,
   completed_at: '2014-10-12'
   })
+
+Completion.create({
+  task_id: 1,
+  completed_at: '2014-10-13'
+  })
+
 Task.create({
-  description: 'Read',
-  starts_at: '2014-11-10',
-  repeat_times: 1,
-  repeats_every: "day"
+  description: 'scheduled, not braindump',
+  starts_at: '2014-11-10'
   })
 
 Completion.create({
@@ -33,23 +36,13 @@ Completion.create({
 Task.create({
   description: 'Salsa Dancing',
   starts_at: '2014-12-10',
-  repeat_times: 1,
-  repeats_every: "week"})
+  repeat_times: 1,})
 
 Completion.create({
-  task_id: 1,
+  task_id: 3,
   completed_at: '2014-12-12'
   })
 
 Task.create({
-  description: 'Salsa Dancing',
-  repeat_times: 1,
-  repeats_every: "week"})
-
-Completion.create({
-  task_id: 1,
-  completed_at: '2014-12-12'
+  description: 'this should only show up in braindump'
   })
-  
-
-
