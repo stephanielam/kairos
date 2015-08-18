@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "home#show"
 
   namespace :api do
+    get '/braindump' => 'tasks#braindump'
     resources :tasks, only:[:index, :create, :show, :update, :destroy]
   end
 

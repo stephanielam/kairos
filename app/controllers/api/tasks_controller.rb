@@ -2,9 +2,15 @@ class Api::TasksController < ApplicationController
 
   def index
     tasks = Task.all
-    completions = Completion.all
     render json: tasks.to_json(include: :completions)
   end
+
+  def braindump
+    tasks = Task.where(starts_at: nil)
+    render json: tasks.to_json(include: :completions)
+  end
+
+  
 
   def create
     task = Task.new(task_params)
