@@ -32,11 +32,10 @@ var Braindump = React.createClass({
     })
   },
   handleStartTime: function(e){
-    console.log("Handle new start time: " + value)
+    console.log("Handle new start time: " + e.target.value)
     this.setState({
       time: e.target.value
     })
-    // this.props.onChange(e.target.value);
   },
   handleRecurrence: function(e){
     console.log("Set Recurrences: " + e.target.value)
@@ -136,7 +135,7 @@ var Braindump = React.createClass({
           <div className="hover-area">
             <h1>{this.state.currentTask.description}</h1>
             <form action="" method="POST">
-              <input id="starttime" name="starttime" type="time" onChange={this.handleStartTime}/><br/>
+              <input id="starttime" name="starttime" type="datetime-local" onChange={this.handleStartTime}/><br/>
               <button type="button" className="btn btn-default" onClick={this.scheduleOnce}>Schedule Once</button>
             </form>
           </div>
