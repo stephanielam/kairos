@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Task.create({
-  description: 'recurring, not braindump',
+  description: 'scheduled, recurring, not braindump',
   starts_at: '2014-10-10T08:00:00.000Z',
   repeat_times: 5,
   })
@@ -63,4 +63,9 @@ Task.create({
 Task.create({
 description: 'sceduled for day after, DAY AFTER!!!! OKAY?!?!?!, not recurring',
   starts_at: '2015-08-21T09:00:00.000Z'
+  })
+
+Task.create({
+  description: 'recurring, not braindump',
+  repeat_times: 2,
   })
