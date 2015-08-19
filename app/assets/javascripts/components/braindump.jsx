@@ -61,6 +61,10 @@ var Braindump = React.createClass({
       formView: 'hidden'
     })
   },
+  clear: function(){
+    console.log("Clear completed")
+    this.componentDidMount()
+  },
   handleTodo: function(object){
     console.log("POST /todo/"+this.state.currentTask.id)
     $.ajax({
@@ -98,6 +102,7 @@ var Braindump = React.createClass({
       <h1>B R A I N D U M P</h1>
       <Textfield newvalue={this.state.description} onChange={this.updateDescription}/>
       <button type="button" className="btn btn-default" onClick={this.addTodo}>Add</button>
+      <button type="button" className="btn btn-default" onClick={this.clear}>Clear Completed</button>
       <List schedule={this.handleForm} todos={this.state.todos}/>
 
       </div>
