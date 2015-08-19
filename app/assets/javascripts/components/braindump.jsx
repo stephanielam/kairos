@@ -23,7 +23,7 @@ var Braindump = React.createClass({
       formView: 'hidden',
       description: '',
       time: '',
-      recurrence: '',
+      recurrences: '',
     }
   },
   updateDescription: function(value){
@@ -32,12 +32,18 @@ var Braindump = React.createClass({
     })
   },
   handleStartTime: function(e){
-    console.log("Handle new start time")
-    this.props.onChange(e.target.value);
+    console.log("Handle new start time: " + value)
+    this.setState({
+      time: e.target.value
+    })
+    // this.props.onChange(e.target.value);
   },
   handleRecurrence: function(e){
-    console.log("Handle Recurrences")
-    this.props.onChange(e.target.value);
+    console.log("Set Recurrences: " + e.target.value)
+    this.setState({
+      recurrences: e.target.value
+    })
+    
   },
   addTodo: function(id){
     console.log("POST /todo/ (add to braindump)")
@@ -65,19 +71,39 @@ var Braindump = React.createClass({
     console.log("Clear completed")
     this.componentDidMount()
   },
-  handleTodo: function(object){
-    console.log("POST /todo/"+this.state.currentTask.id)
+  scheduleOnce: function(object){
+    console.log("PATCH /todo/"+this.state.currentTask.id)
     $.ajax({
-      type: 'POST',
+      type: 'PATCH',
       url: 'api/tasks/'+this.state.currentTask.id,
       data: {
         task: {
-          description: this.state.description
+          repeat_times: this.state.recurrences
         }
       },
       dataType: 'json',
       success: function(transport) {
-        console.log(currentTask.description+"schedule success")
+        console.log(this.state.currentTask.description+"schedule success")
+      }.bind(this)
+    })
+
+    this.setState({
+      formView: 'hidden'
+    })
+  },
+  scheduleRecurring: function(object){
+    console.log("PATCH /todo/"+this.state.currentTask.id)
+    $.ajax({
+      type: 'PATCH',
+      url: 'api/tasks/'+this.state.currentTask.id,
+      data: {
+        task: {
+          repeat_times: this.state.recurrences
+        }
+      },
+      dataType: 'json',
+      success: function(transport) {
+        console.log(this.state.currentTask.description+"schedule success")
       }.bind(this)
     })
 
@@ -110,15 +136,15 @@ var Braindump = React.createClass({
           <div className="hover-area">
             <h1>{this.state.currentTask.description}</h1>
             <form action="" method="POST">
-              <input id="starttime" name="starttime" type="time"/><br/>
-              <button type="button" className="btn btn-default" onClick={this.handleTodo} onChange={this.handleStartTime}>Schedule Once</button>
+              <input id="starttime" name="starttime" type="time" onChange={this.handleStartTime}/><br/>
+              <button type="button" className="btn btn-default" onClick={this.scheduleOnce}>Schedule Once</button>
             </form>
           </div>
           <div className="hover-area">
             <h1>{this.state.currentTask.description}</h1>
             <form action="" method="POST">
-              <input id="times" type="range" min="1" max="10"></input><p>/week</p>
-              <button type="button" className="btn btn-default" onClick={this.handleTodo} onChange={this.handleRecurrence}>Schedule Recurring</button>
+              <input id="times" type="range" min="1" max="10" onChange={this.handleRecurrence}></input><p>/week</p>
+              <button type="button" className="btn btn-default" onClick={this.scheduleRecurring}>Schedule Recurring</button>
             </form>
           </div>
         </div>

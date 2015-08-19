@@ -18,6 +18,8 @@
 //= require components/header
 //= require components/navbar
 //= require components/column
+
+//= require components/calitem
 //= require components/calendar
 //= require components/progress
 //= require components/braindump
@@ -25,6 +27,7 @@
 //= require components/list
 //= require components/todoitem
 //= require components/pbar
+
 //= require components
 
 //= require_tree .
