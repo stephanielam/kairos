@@ -12,6 +12,10 @@ var Pbar = React.createClass({
   subtract: function() {
     console.log("subtract recurrence")
   },
+  show: function(id){
+    console.log(this.props.activity.description)
+    this.props.schedule(id)
+  },
   render: function(){
     var activity = this.props.activity
     var progress = this.props.activity.percent
@@ -30,7 +34,7 @@ var Pbar = React.createClass({
     }
 
     return (
-      <div className="todo-progress">
+      <div className="todo-progress" onClick={this.show.bind(this, this.props.activity)}>
         <h2>{activity.description}
         </h2>
         <div className="progress">

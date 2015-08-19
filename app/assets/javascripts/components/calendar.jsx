@@ -32,7 +32,7 @@ var Calendar = React.createClass({
   getInitialState: function(){
     return {
       date: new Date(),
-      startTime: 0,
+      startTime: 6,
       endTime: 24,
       todos: [],
       array: []
@@ -86,19 +86,29 @@ var Calendar = React.createClass({
         </tr>
       }
     })
+  var monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+  var monthShort = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+  "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC"
+  ];
 
     return (
       <div id="calendar">
       <div className="wrap">
-      <img src="images/leftarrow.png" id="prev" className="clickable clicker" onClick={this.back}/>
-      <div className="circle"></div>
+        <img src="images/leftarrow.png" id="prev" className="clickable clicker" onClick={this.back}/>
+        <div className="circle"></div>
+      </div><div className="date">
+        <span className="month-short">{monthShort[date.getMonth()]}</span>
+        <span className="day">{date.getDate()}</span>
+        <span className="month">{monthNames[date.getMonth()]}</span>
+        <span className="year">{date.getFullYear()}</span>
       </div>
-      <h1 id="date">{date.toDateString()}</h1>
+      
       <div className="wrap">
       <img src="images/rightarrow.png" id="next" className="clickable clicker" onClick={this.forward}/>
       <div className="circle"></div>
       </div>
-      <div>
+      <div id="cal-btn">
       <button className="btn" id="today" onClick={this.today}>TODAY<img src="images/todayarrow.png" id="btn-icon"/></button>
       </div>
       <div id="table-scroll">
