@@ -145,7 +145,7 @@ h2:hover {
 
 #todo-scroll{
   height: 500px;
-  overflow: auto;  
+  overflow: auto;
   margin-top: 12px;
 }
 
@@ -485,4 +485,4 @@ p {
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);  
   z-index: 0;
-  }
+}
