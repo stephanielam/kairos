@@ -34,13 +34,9 @@ var App = React.createClass({
           <div className="container">
             <div className="row center">
 
-            <Column size={6}>
               <Calendar />
-            </Column>
 
-            <Column size={6}>
               <Progress />
-            </Column>
             </div>
           </div>
         </div>

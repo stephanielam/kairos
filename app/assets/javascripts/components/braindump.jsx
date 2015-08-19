@@ -45,10 +45,10 @@ var Braindump = React.createClass({
     
   },
   addTodo: function(id){
-    console.log("POST /todo/ (add to braindump)")
+    console.log("POST /tasks_models (add to braindump)")
     $.ajax({
       type: 'POST',
-      url: 'api/tasks',
+      url: 'api/tasks_models',
       data: {
         task: {
           description: this.state.description
