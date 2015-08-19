@@ -145,7 +145,7 @@ h2 {
 
 #todo-scroll{
   height: 500px;
-  overflow: auto;  
+  overflow: auto;
   margin-top: 12px;
 }
 
@@ -211,7 +211,7 @@ h2 {
 
 #table-scroll{
   height: 73vh;
-  overflow: auto;  
+  overflow: auto;
   margin-top: 10px;
 }
 
@@ -300,12 +300,12 @@ button {
 
 .clicker:hover + .circle {
   animation: rotator cubic-bezier(0.68, 0.21, 0.38, 0.57) .9s infinite;
-  background-image: linear-gradient(45deg, 
+  background-image: linear-gradient(45deg,
     rgba(13, 34, 51, 0.9) 0%,
     rgba(13, 34, 51, 0.68) 30%,
     #7CC0B5 30%,
-    #265B61 70%, 
-    rgba(13, 34, 51, 0.9) 70%, 
+    #265B61 70%,
+    rgba(13, 34, 51, 0.9) 70%,
     rgba(13, 34, 51, 0.68) 100%
   );
 }
