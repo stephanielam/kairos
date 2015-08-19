@@ -17,39 +17,39 @@ class Api::TaskInstancesController < ApplicationController
     render json: task_instances.to_json
   end
 
-    # def create
-    #   task = Task.new(task_params)
-    #   if task.save
-    #     render json: task
-    #   else
-    #     render json: get_resource.errors, status: :unprocessable_entity
-    #   end
-    # end
-    #
-    # def show
-    #   task = Task.find(params[:id])
-    #   render json: task
-    # end
-    #
-    # def update
-    #   task = Task.find(params[:id])
-    #   if task.update(task_params)
-    #     render json: task
-    #   else
-    #   render json: task.errors, status: :unprocessable_entity
-    #   end
-    # end
-    #
-    # def destroy
-    #   task = Task.find(params[:id])
-    #   task.destroy
-    #   head :no_content
-    # end
-
-    private
-
-    def task_instance_params
-      params.require(:task_instance).permit(:task_model_id, :starts_at, :completed_at)
+  def create
+    task = TaskInstance.new(task_params)
+    if TaskInstance.save
+      render json: task
+    else
+      render json: get_resource.errors, status: :unprocessable_entity
     end
-
   end
+  
+  def show
+    task = TaskInstance.find(params[:id])
+    render json: task
+  end
+  
+  def update
+    task = TaskInstance.find(params[:id])
+    if TaskInstance.update(task_params)
+      render json: task
+    else
+    render json: TaskInstance.errors, status: :unprocessable_entity
+    end
+  end
+  
+  def destroy
+    task = TaskInstance.find(params[:id])
+    TaskInstance.destroy
+    head :no_content
+  end
+
+  private
+
+  def task_instance_params
+    params.require(:task_instance).permit(:task_model_id, :starts_at, :completed_at)
+  end
+
+end
