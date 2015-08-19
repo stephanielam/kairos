@@ -13,16 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20150817222201) do
 
-  create_table "completions", force: :cascade do |t|
-    t.integer  "task_id"
+  create_table "task_instances", force: :cascade do |t|
+    t.integer  "task_model_id"
+    t.datetime "starts_at"
     t.datetime "completed_at"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  create_table "tasks", force: :cascade do |t|
+  create_table "task_models", force: :cascade do |t|
     t.string   "description"
-    t.datetime "starts_at"
     t.integer  "repeat_times"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
