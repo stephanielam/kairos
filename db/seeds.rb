@@ -44,3 +44,8 @@ Completion.create({
 Task.create({
   description: 'this should only show up in braindump'
   })
+
+Task.create({
+  description: 'sceduled for today, not recurring',
+  starts_at: '2015-08-18T09:00:00.000Z'
+  })

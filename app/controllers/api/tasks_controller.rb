@@ -6,7 +6,7 @@ class Api::TasksController < ApplicationController
   end
 
   def braindump
-    tasks = Task.select("tasks.id, description").joins('LEFT OUTER JOIN completions ON completions.task_id = tasks.id').where('starts_at IS NULL AND completed_at IS NULL')
+    tasks = Task.select('tasks.id, description').joins('LEFT OUTER JOIN completions ON completions.task_id = tasks.id').where('starts_at IS NULL AND completed_at IS NULL')
     render json: tasks.to_json
   end
 
@@ -16,7 +16,8 @@ class Api::TasksController < ApplicationController
   end
 
   def calendar
-    tasks = Task.find_by_sql("SELECT tasks.id, description, 	strftime('%H', starts_at) AS time FROM tasks LEFT OUTER JOIN completions ON completions.task_id = tasks.id WHERE (starts_at IS NOT NULL) GROUP BY tasks.id")
+    tasks = Task.find_by_sql("SELECT tasks.id, date(starts_at) AS day, description, CAST(strftime('%H', starts_at) AS INT) AS time FROM tasks LEFT OUTER JOIN completions ON completions.task_id = tasks.id WHERE (starts_at IS NOT NULL) GROUP BY tasks.id")
+
     render json: tasks.to_json
   end
 
