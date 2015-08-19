@@ -2,28 +2,31 @@
 // var CalItem = require('./calitem');
 
 var Calendar = React.createClass({
+  // TODO: edit url nce end points are functional
   componentDidMount: function(){
-    // TODO: set todos to todays dates todos
-    // GET tasks/?startdate=this.state.date
+    var dateurl = (this.state.date.getFullYear() + "-" +  
+      ("0" + (this.state.date.getMonth() + 1)).slice(-2)+ "-" + 
+      this.state.date.getDate())
+    console.log("Show cal for " + dateurl)
     $.ajax({
       type: 'GET',
-      url: 'api/tasks',
+      url: 'api/calendar/' + dateurl,
       success: function(todo_data) {
         var temp = []
         for (i=0; i < 24; i++){
+          var task = null
           for (j=0; j < todo_data.length; j++){
-            // TODO: if todo_data[j].startTime == j
-            if (true) {
-              temp.push(todo_data[j].starts_at)
-            } else {
-              temp.push(null)
-            }
+            if (todo_data[j].start_time == i) {
+              task = todo_data[j].description
+            } 
           }
+          temp.push(task)
         }
+
         this.setState({
           todos: todo_data,
           array: temp
-        })
+        })        
       }.bind(this)
     })
   },
@@ -37,7 +40,6 @@ var Calendar = React.createClass({
     }
   },
   back: function(event){
-    console.log("back")
     var prevDate = new Date()
     prevDate.setDate(this.state.date.getDate() - 1)
     this.setState({
@@ -46,20 +48,20 @@ var Calendar = React.createClass({
   },
 
   forward: function(event){
-    console.log("forward")
     var nextDate = new Date()
     nextDate.setDate(this.state.date.getDate() + 1)
     this.setState({
       date: nextDate
     })
+    this.componentDidMount()
   },
 
   today: function(event){
-    console.log("today")
     var today = new Date();
      this.setState({
       date: today
     })
+    this.componentDidMount()
   },
   handleTodo: function(event){
     console.log("POST /todo/:id (edit/add)  calendar")
