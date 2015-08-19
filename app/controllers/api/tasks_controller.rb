@@ -16,7 +16,7 @@ class Api::TasksController < ApplicationController
   end
 
   def calendar
-    tasks = Task.find_by_sql("SELECT tasks.id, date(starts_at) AS task_day, description, CAST(strftime('%H', starts_at) AS INT) AS start_time FROM tasks LEFT OUTER JOIN completions ON completions.task_id = tasks.id WHERE (starts_at IS NOT NULL) GROUP BY tasks.id")
+    tasks = Task.find_by_sql("SELECT tasks.id, date(starts_at) AS task_day, description, strftime('%H', starts_at) AS start_time FROM tasks LEFT OUTER JOIN completions ON completions.task_id = tasks.id WHERE (starts_at IS NOT NULL) GROUP BY tasks.id")
 
     render json: tasks.to_json
   end
