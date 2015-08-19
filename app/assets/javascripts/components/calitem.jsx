@@ -5,22 +5,15 @@ var CalItem = React.createClass({
     return {
       status: ""
     }
-  },
- handleCheck: function(id){
-    console.log("POST /todos/:id")
+  }, 
+  handleCheck: function(id){
     var temp = "done"
-    if (this.state.status == "done") temp = ""
-    this.setState({
-      status: temp
-    })
-
-  var temp = "done"
     var start = new Date()
     if (this.state.status == "done") {
       temp = "",
       start = null
     }
-    console.log("POST /api/tasks/"+this.props.todo.id)
+    console.log("PATCH /api/tasks/"+this.props.todo.id)
     $.ajax({
       // TODO
       type: 'PATCH',
@@ -32,13 +25,14 @@ var CalItem = React.createClass({
       },
       dataType: 'json',
       success: function(transport) {
-        console.log("Handled todo! " + this.props.todo.description + " StartTime = " + start)
+        console.log("Set '" + this.props.todo.description + "' start time: " + start)
         this.setState({
-          status: temp
+          status: temp,
         })
       }.bind(this)
     })
   },
+ 
   render: function(){
     return (
       <div onClick={this.handleCheck} 

@@ -17,12 +17,11 @@ var Calendar = React.createClass({
           var task = null
           for (j=0; j < todo_data.length; j++){
             if (todo_data[j].start_time == i) {
-              task = todo_data[j].description
+              task = todo_data[j]
             } 
           }
           temp.push(task)
         }
-
         this.setState({
           todos: todo_data,
           array: temp
@@ -45,6 +44,7 @@ var Calendar = React.createClass({
     this.setState({
       date: prevDate,
     })
+    this.componentDidMount()
   },
 
   forward: function(event){
@@ -58,7 +58,7 @@ var Calendar = React.createClass({
 
   today: function(event){
     var today = new Date();
-     this.setState({
+    this.setState({
       date: today
     })
     this.componentDidMount()
@@ -81,7 +81,7 @@ var Calendar = React.createClass({
       if (index > start && index < end) {
         return <tr><td style={columnStyle} >{hour}</td>
         <td className="todo" key={index}>
-          {array[index]}
+        <CalItem todo={array[index]} id={index} key={index}/>
         </td>
         </tr>
       }
@@ -89,27 +89,27 @@ var Calendar = React.createClass({
 
     return (
       <div id="calendar">
-        <div className="wrap">
-          <img src="images/leftarrow.png" id="prev" className="clickable clicker" onClick={this.back}/>
-            <div className="circle"></div>
-        </div>
-        <h1 id="date">{date.toDateString()}</h1>
-        <div className="wrap">
-          <img src="images/rightarrow.png" id="next" className="clickable clicker" onClick={this.forward}/>
-          <div className="circle"></div>
-        </div>
-        <div>
-          <button className="btn" id="today" onClick={this.today}>TODAY<img src="images/todayarrow.png" id="btn-icon"/></button>
-        </div>
-        <div id="table-scroll">
-        <table className="table table-hover">
-          <tbody>
-           {table}
-          </tbody>
-        </table>
-        </div>
+      <div className="wrap">
+      <img src="images/leftarrow.png" id="prev" className="clickable clicker" onClick={this.back}/>
+      <div className="circle"></div>
       </div>
-    )
+      <h1 id="date">{date.toDateString()}</h1>
+      <div className="wrap">
+      <img src="images/rightarrow.png" id="next" className="clickable clicker" onClick={this.forward}/>
+      <div className="circle"></div>
+      </div>
+      <div>
+      <button className="btn" id="today" onClick={this.today}>TODAY<img src="images/todayarrow.png" id="btn-icon"/></button>
+      </div>
+      <div id="table-scroll">
+      <table className="table table-hover">
+      <tbody>
+      {table}
+      </tbody>
+      </table>
+      </div>
+      </div>
+      )
   }
 });
 
