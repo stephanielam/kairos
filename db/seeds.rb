@@ -49,3 +49,18 @@ Task.create({
   description: 'sceduled for today, not recurring',
   starts_at: '2015-08-18T09:00:00.000Z'
   })
+
+Task.create({
+  description: 'sceduled for tomorrow, not recurring',
+  starts_at: '2015-08-19T09:00:00.000Z'
+  })
+
+Task.create({
+  description: 'sceduled for day after tomorrow, not recurring',
+  starts_at: '2015-08-20T09:00:00.000Z'
+  })
+
+Task.create({
+description: 'sceduled for day after, DAY AFTER!!!! OKAY?!?!?!, not recurring',
+  starts_at: '2015-08-21T09:00:00.000Z'
+  })
