@@ -153,6 +153,7 @@ h2:hover {
 #calendar {
   width: 50%;
   position: fixed;
+  left: 4%;
 }
 
 #calendar h1 {
@@ -160,6 +161,12 @@ h2:hover {
 }
 
 /* Progress */
+#progress {
+  width: 50%;  
+  position: absolute;
+  left: 50%;
+}
+
 #progress h1 {
   padding-top: 15px;
 }
