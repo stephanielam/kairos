@@ -17,7 +17,6 @@ var TodoItem = React.createClass({
     }
     console.log("POST /api/tasks/"+this.props.todo.id)
     $.ajax({
-      // TODO
       type: 'PATCH',
       url: 'api/tasks/'+this.props.todo.id,
       data: {
@@ -39,8 +38,17 @@ var TodoItem = React.createClass({
     this.props.showForm(id)
   },
   delete: function(id){
-    // TODO
-    console.log("delete")
+     $.ajax({
+      type: 'DELETE',
+      url: 'api/tasks/'+this.props.todo.id,
+      dataType: 'json',
+      success: function(transport) {
+        console.log("Deleted " + this.props.todo.description)
+        this.setState({
+        })
+      }.bind(this)
+    })
+    // TODO: rerender braindump
   },
   render: function(){
     return (
@@ -51,6 +59,7 @@ var TodoItem = React.createClass({
         <span onClick={this.handleCheck}> {this.props.todo.description}</span>
         <img onClick={this.show.bind(this, this.props.todo)} key={this.props.id} src={this.state.img}/>
         <img onClick={this.delete.bind(this, this.props.todo)} key={this.props.id} src="images/xicon.png"/>
+
       </li>
     )
   }
