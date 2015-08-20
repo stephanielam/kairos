@@ -18,14 +18,17 @@ class Api::TaskModelsController < ApplicationController
 
   def progress
     repeating_task_models = TaskModel.includes(:task_instances).repeating
-    task_models = []
+    progress = []
     repeating_task_models.each do |task_model|
-      task_model_object = { id: task_model.id, description: task_model.description }
+      task_model_object = {
+        id: task_model.id,
+        description: task_model.description
+      }
       completed_tasks_count = task_model.task_instances.completed.count
       task_model_object[:percent] = (completed_tasks_count.to_f / task_model.repeat_times.to_f * 100.0).to_i
-      task_models.push(task_model_object)
+      progress.push(task_model_object)
     end
-    render json: task_models.to_json
+    render json: progress.to_json
   end
 
   def create
