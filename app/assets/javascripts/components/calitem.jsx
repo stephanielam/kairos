@@ -39,7 +39,7 @@ var CalItem = React.createClass({
         className={this.state.status}
         id={this.props.id}
         key={this.props.id}>
-        {this.props.todo}
+        {this.props.name}
       </div>
     )
   }
