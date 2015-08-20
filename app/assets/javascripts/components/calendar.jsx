@@ -2,12 +2,13 @@
 // var CalItem = require('./calitem');
 
 var Calendar = React.createClass({
-  // TODO: edit url nce end points are functional
   componentDidMount: function(){
+    console.log("Load calendar")
     var dateurl = (this.state.date.getFullYear() + "-" +  
       ("0" + (this.state.date.getMonth() + 1)).slice(-2)+ "-" + 
       this.state.date.getDate())
     console.log("Show cal for " + dateurl)
+    this.timer = setInterval(function(){
     $.ajax({
       type: 'GET',
       url: 'api/calendar/' + dateurl,
@@ -28,6 +29,15 @@ var Calendar = React.createClass({
         })        
       }.bind(this)
     })
+    }.bind(this), 100);
+  }, componentWillUnmount: function () {
+    clearInterval(this.timer);
+  },
+  reload: function(){
+    console.log("reload")
+    setInterval(function() {
+      this.componentDidMount()
+    }, 1000);
   },
   getInitialState: function(){
     return {
@@ -97,7 +107,7 @@ var Calendar = React.createClass({
       <div className="wrap">
         <img src="images/leftarrow.png" id="prev" className="clickable clicker" onClick={this.back}/>
         <div className="circle"></div>
-      </div><div className="date">
+      </div><div className="date" onClick={this.reload}>
         <span className="month-short">{monthShort[date.getMonth()]}</span>
         <span className="day">{date.getDate()}</span>
         <span className="month">{monthNames[date.getMonth()]}</span>
