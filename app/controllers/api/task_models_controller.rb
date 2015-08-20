@@ -7,7 +7,7 @@ class Api::TaskModelsController < ApplicationController
 
   def braindump
     task_models = TaskModel.find_by_sql(
-      "SELECT task_models.id, description " +
+      "SELECT task_models.id, task_instances.id AS task_instance_id, description " +
       "FROM task_models " +
       "LEFT OUTER JOIN task_instances ON task_instances.task_model_id = task_models.id " +
       "WHERE repeat_times IS NULL AND starts_at IS NULL AND completed_at IS NUll " +
@@ -28,7 +28,7 @@ class Api::TaskModelsController < ApplicationController
     render json: task_models.to_json
   end
 
-  
+
 
   def create
     task = TaskModel.new(task_params)

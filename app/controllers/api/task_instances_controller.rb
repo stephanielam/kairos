@@ -7,11 +7,11 @@ class Api::TaskInstancesController < ApplicationController
 
   def calendar
     task_instances = TaskModel.find_by_sql(
-      "SELECT task_models.id, date(starts_at) AS task_instance_day, description, CAST(strftime('%H', starts_at) AS INT) AS start_time " +
+      "SELECT task_models.id, task_instances.id AS task_instance_id, date(starts_at) AS task_instance_day, description, CAST(strftime('%H', starts_at) AS INT) AS start_time " +
       "FROM task_models " +
       "LEFT OUTER JOIN task_instances ON task_instances.task_model_id = task_instances.id " +
       "WHERE (starts_at IS NOT NULL) " +
-      "GROUP BY tasks.id"
+      "GROUP BY task_models.id"
     )
     task_instances = TaskInstanceHelper.sort_by_date(task_instances, params[:date_to_format])
     render json: task_instances.to_json
@@ -25,12 +25,12 @@ class Api::TaskInstancesController < ApplicationController
       render json: get_resource.errors, status: :unprocessable_entity
     end
   end
-  
+
   def show
     task = TaskInstance.find(params[:id])
     render json: task
   end
-  
+
   def update
     task = TaskInstance.find(params[:id])
     if TaskInstance.update(task_params)
@@ -39,7 +39,7 @@ class Api::TaskInstancesController < ApplicationController
     render json: TaskInstance.errors, status: :unprocessable_entity
     end
   end
-  
+
   def destroy
     task = TaskInstance.find(params[:id])
     TaskInstance.destroy
