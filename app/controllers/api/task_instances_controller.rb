@@ -33,7 +33,7 @@ class Api::TaskInstancesController < ApplicationController
 
   def update
     task = TaskInstance.find(params[:id])
-    if TaskInstance.update(task_params)
+    if task.update(task_instance_params)
       render json: task
     else
     render json: TaskInstance.errors, status: :unprocessable_entity
@@ -42,7 +42,7 @@ class Api::TaskInstancesController < ApplicationController
 
   def destroy
     task = TaskInstance.find(params[:id])
-    TaskInstance.destroy
+    task.destroy
     head :no_content
   end
 

@@ -31,7 +31,8 @@ class Api::TaskModelsController < ApplicationController
 
 
   def create
-    task = TaskModel.new(task_params)
+    task = TaskModel.new(task_model_params)
+    # instance = TaskInstance.new(task_model_id: task.id)
     if task.save
       render json: task
     else
@@ -46,7 +47,7 @@ class Api::TaskModelsController < ApplicationController
 
   def update
     task = TaskModel.find(params[:id])
-    if task.update(task_params)
+    if task.update(task_model_params)
       render json: task
     else
     render json: task.errors, status: :unprocessable_entity
