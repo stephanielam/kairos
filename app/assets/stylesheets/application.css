@@ -173,10 +173,6 @@ h2:hover {
   left: 50%;
 }
 
-#progress h1 {
-  padding-top: 15px;
-}
-
 #scheduleRecurring {
   border-radius: 20px;
   background: rgba(233, 234, 216, 0.95);
@@ -201,15 +197,16 @@ h2:hover {
 
 #progress h1 {
   color: #3A3A3A;
-   font-family: Oswald;
+  font-family: Oswald;
+  padding-top: 15px;
 }
 
 #progress h2 {
   background: rgba(255, 255, 255, 0.65);
-  width: 66%;
+  width: 70%;
   margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 25px;
+  margin-bottom: 6px;
   font-family: Helvetica;
 }
 
@@ -217,10 +214,11 @@ h2:hover {
 /*progress bar*/
 .progress {
   height: 26px;
-  width: 418px;
+  width: 445px;
   padding: 0px;
   border-radius: 20px;
   margin: 0 auto;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.44);
 }
 
 .todo-progress {
