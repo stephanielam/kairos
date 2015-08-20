@@ -1,10 +1,11 @@
-TaskModel.create({          #1
+require 'pry'
+tm = TaskModel.create({          #1
   description: 'scheduled, recurring, not braindump',
   repeat_times: 5,
   })
-
+# binding.pry
 TaskInstance.create({
-  task_model_id: 1,
+  task_model: tm,
   starts_at: '2015-08-19T08:00:00.000Z',
   completed_at: '2015-08-19T16:00:00.000Z'
   })
