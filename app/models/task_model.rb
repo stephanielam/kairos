@@ -1,6 +1,7 @@
 class TaskModel < ActiveRecord::Base
   has_many :task_instances
 
+  # validates :id, presence: true, uniqueness: true
   # validates :description, presence:true, length: { in: 1..50 }
   # validates :repeat_times, numericality: true
 
