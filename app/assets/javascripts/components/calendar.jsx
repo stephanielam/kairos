@@ -3,32 +3,33 @@
 
 var Calendar = React.createClass({
   componentDidMount: function(){
+    this.timer = setInterval(function(){
     console.log("Load calendar")
     var dateurl = (this.state.date.getFullYear() + "-" +  
       ("0" + (this.state.date.getMonth() + 1)).slice(-2)+ "-" + 
       this.state.date.getDate())
     console.log("Show cal for " + dateurl)
-    this.timer = setInterval(function(){
-    $.ajax({
-      type: 'GET',
-      url: 'api/calendar/' + dateurl,
-      success: function(todo_data) {
-        var temp = []
-        for (i=0; i < 24; i++){
-          var task = null
-          for (j=0; j < todo_data.length; j++){
-            if (todo_data[j].start_time == i) {
-              task = todo_data[j]
-            } 
+
+      $.ajax({
+        type: 'GET',
+        url: 'api/calendar/' + dateurl,
+        success: function(todo_data) {
+          var temp = []
+          for (i=0; i < 24; i++){
+            var task = null
+            for (j=0; j < todo_data.length; j++){
+              if (todo_data[j].start_time == i) {
+                task = todo_data[j]
+              } 
+            }
+            temp.push(task)
           }
-          temp.push(task)
-        }
-        this.setState({
-          todos: todo_data,
-          array: temp
-        })        
-      }.bind(this)
-    })
+          this.setState({
+            todos: todo_data,
+            array: temp
+          })        
+        }.bind(this)
+      })
     }.bind(this), 100);
   }, componentWillUnmount: function () {
     clearInterval(this.timer);
@@ -88,10 +89,14 @@ var Calendar = React.createClass({
       width: 10 + '%'
     }
     var table = hours.map(function (hour, index) {
+      var name = ''
+      if (array[index]){
+        name = array[index].description
+      }
       if (index > start && index < end) {
         return <tr><td style={columnStyle} >{hour}</td>
         <td className="todo" key={index}>
-        <CalItem todo={array[index]} id={index} key={index}/>
+        <CalItem todo={array[index]} id={index} key={index} name={name}/>
         </td>
         </tr>
       }
