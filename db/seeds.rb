@@ -1,11 +1,10 @@
-require 'pry'
-tm = TaskModel.create({          #1
-  description: 'scheduled, recurring, not braindump',
+TaskModel.create({          #1
+  description: 'Weekly manscaping',
   repeat_times: 5,
   })
-# binding.pry
+
 TaskInstance.create({
-  task_model: tm,
+  task_model_id: 1,
   starts_at: '2015-08-19T08:00:00.000Z',
   completed_at: '2015-08-19T16:00:00.000Z'
   })
@@ -16,7 +15,7 @@ TaskInstance.create({
   })
 
 TaskModel.create({          #2
-  description: 'scheduled, not braindump'
+  description: 'Call Mama'
   })
 
 TaskInstance.create({
@@ -36,7 +35,7 @@ TaskInstance.create({
   })
 
 TaskModel.create({          #4
-  description: 'this is the only thing that should show up in braindump'
+  description: 'Have to meet ScarJo someday.  It is a must!'
   })
 
 TaskInstance.create({
@@ -44,7 +43,7 @@ TaskInstance.create({
   })
 
 TaskModel.create({          #5
-  description: 'sceduled for today, not recurring'
+  description: 'Finish pruning the damn roses'
   })
 
 TaskInstance.create({
@@ -53,7 +52,7 @@ TaskInstance.create({
   })
 
 TaskModel.create({          #6
-  description: 'sceduled for tomorrow, not recurring'
+  description: 'Day trip to Seattle'
   })
 
 TaskInstance.create({
@@ -62,7 +61,7 @@ TaskInstance.create({
   })
 
 TaskModel.create({          #7
-  description: 'sceduled for day after tomorrow, not recurring'
+  description: 'Paint the next Mona Lisa'
   })
 
 TaskInstance.create({
@@ -71,7 +70,7 @@ TaskInstance.create({
   })
 
 TaskModel.create({          #8
-description: 'sceduled for day after, DAY AFTER!!!! OKAY?!?!?!, not recurring'
+description: 'Found Billion Dollar Start Up'
   })
 
 TaskInstance.create({
@@ -80,7 +79,7 @@ TaskInstance.create({
   })
 
 TaskModel.create({          #9
-  description: 'recurring, nothing scheduled or completed yet, not braindump',
+  description: 'Go Fishing',
   repeat_times: 2,
   })
 
@@ -109,12 +108,61 @@ TaskInstance.create({
   })
 
 TaskModel.create({
-  description: 'Need to figure my fucking life out'
+  description: "Attend Jeremy Shaki's Bar Mitzvah--ZING!"
   })
 
 TaskInstance.create({
   task_model_id:11
   })
+
+TaskModel.create({
+  description: 'Laundry Day'
+  })
+
+TaskInstance.create({
+  task_model_id:12,
+  starts_at: '2015-08-27T09:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+
+  })
+
+TaskModel.create({
+  description: 'Weekly cleaning'
+  })
+
+TaskInstance.create({
+  task_model_id:13,
+  starts_at: '2015-08-27T09:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+  })
+
+TaskModel.create({
+  description: 'Call Mama',
+  })
+
+TaskInstance.create({
+  task_model_id:14
+  })
+
+TaskModel.create({
+  description: 'Plan Euro 2016 trip'
+  })
+
+TaskInstance.create({
+  task_model_id:15,
+  starts_at: '2015-08-21T18:00:00.000Z',
+  })
+
+TaskModel.create({
+  description: 'Hike the Chief'
+  })
+
+TaskInstance.create({
+  task_model_id:16,
+  starts_at: '2015-08-21T18:00:00.000Z'
+  })
+
+
 
 
 
