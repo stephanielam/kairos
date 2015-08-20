@@ -1,7 +1,7 @@
 class Api::TaskInstancesController < ApplicationController
 
   def index
-    task_instances = TaskInstance.all
+    task_instances = TaskModel.find(params[:task_model_id]).task_instances
     render json: task_instances.to_json
   end
 
