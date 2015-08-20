@@ -15,13 +15,15 @@ var TodoItem = React.createClass({
       temp2 = "images/clock.png"
       start = null
     }
-    console.log("POST /api/tasks/"+this.props.todo.id)
+    console.log(this.props.todo)    
+    console.log("POST /api/task_models/"+this.props.todo.id+"/task_instances/"+this.props.todo.task_instance_id)
     $.ajax({
       type: 'PATCH',
-      url: 'api/tasks/'+this.props.todo.id,
+      url: 'api/task_models/'+this.props.todo.id+"/task_instances/"+this.props.todo.task_instance_id,
       data: {
-        task: {
-          starts_at: start
+        task_instance: {
+          starts_at: start,
+          task_model_id: this.props.todo.id
         }
       },
       dataType: 'json',

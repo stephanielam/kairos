@@ -13,7 +13,6 @@ var Pbar = React.createClass({
     console.log("subtract recurrence")
   },
   show: function(id){
-    console.log(this.props.activity.description)
     this.props.schedule(id)
   },
   render: function(){

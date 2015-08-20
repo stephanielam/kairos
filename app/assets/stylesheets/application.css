@@ -100,7 +100,7 @@ h2:hover {
   opacity: 0.5;
   color: white;
   background: rgba(41, 41, 41, 0.3);
-  padding: 30px;
+  padding: 10px;
   width: 400px;
   border: 3px dashed rgba(41, 41, 41, 0.2);
   margin: 10px;
@@ -175,7 +175,6 @@ h2:hover {
   border-radius: 20px;
   padding: 10px;
   background: rgba(233, 234, 216, 0.85);
-  height: 120px;
   width: 220px;
   text-align: center;
   position: fixed;
