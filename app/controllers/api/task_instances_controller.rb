@@ -17,6 +17,12 @@ class Api::TaskInstancesController < ApplicationController
         task_instance_day: task_instance.starts_at.strftime("%F"),
         start_time: task_instance.starts_at.strftime("%H").to_i
       }
+      unless task_instance.completed_at == nil
+        task_instance_object[:completed_at] = task_instance.completed_at.strftime("%F")
+      else
+        task_instance_object[:completed_at] = nil
+      end
+
       calendar.push(task_instance_object)
     end
     render json: calendar.to_json
