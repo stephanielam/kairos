@@ -28,7 +28,7 @@ class Api::TaskModelsController < ApplicationController
     render json: task_models.to_json
   end
 
-  
+
 
   def create
     task = TaskModel.new(task_params)
