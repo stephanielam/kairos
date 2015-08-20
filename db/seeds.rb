@@ -114,7 +114,6 @@ TaskModel.create({
 TaskInstance.create({
   task_model_id:11
   })
-<<<<<<< HEAD
 
 TaskModel.create({
   description: 'Laundry Day'
@@ -162,10 +161,3 @@ TaskInstance.create({
   task_model_id:16,
   starts_at: '2015-08-21T18:00:00.000Z'
   })
-
-
-
-
-
-=======
->>>>>>> master
