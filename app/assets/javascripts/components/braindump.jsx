@@ -5,7 +5,6 @@
 
 var Braindump = React.createClass({
   componentDidMount: function(){
-    console.log("load braindump data")
     $.ajax({
       type: 'GET',
       url: 'api/braindump',
@@ -13,6 +12,7 @@ var Braindump = React.createClass({
         this.setState({
           todos: todo_data
         })
+        console.log("loaded braindump data")
       }.bind(this)
     })
   },
@@ -45,12 +45,12 @@ var Braindump = React.createClass({
     
   },
   addTodo: function(id){
-    console.log("POST /tasks_models (add to braindump)")
+    console.log("POST /task_models (add to braindump)")
     $.ajax({
       type: 'POST',
-      url: 'api/tasks_models',
+      url: 'api/task_models',
       data: {
-        task: {
+        task_model: {
           description: this.state.description
         }
       },
@@ -74,9 +74,9 @@ var Braindump = React.createClass({
     console.log("PATCH /todo/"+this.state.currentTask.id)
     $.ajax({
       type: 'PATCH',
-      url: 'api/tasks/'+this.state.currentTask.id,
+      url: 'api/task_model/'+this.state.currentTask.id,
       data: {
-        task: {
+        task_model: {
           repeat_times: this.state.recurrences
         }
       },
@@ -85,18 +85,17 @@ var Braindump = React.createClass({
         console.log(this.state.currentTask.description+"schedule success")
       }.bind(this)
     })
-
     this.setState({
       formView: 'hidden'
     })
   },
   scheduleRecurring: function(object){
-    console.log("PATCH /todo/"+this.state.currentTask.id)
+    console.log("PATCH api/task_models/"+this.state.currentTask.id)
     $.ajax({
       type: 'PATCH',
-      url: 'api/tasks/'+this.state.currentTask.id,
+      url: 'api/task_models/'+this.state.currentTask.id,
       data: {
-        task: {
+        task_model: {
           repeat_times: this.state.recurrences
         }
       },

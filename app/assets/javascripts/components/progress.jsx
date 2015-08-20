@@ -18,7 +18,7 @@ var Progress = React.createClass({
     return {
       todos: [],
       currentTask: '',
-      formView: '',
+      formView: 'hidden',
       time: new Date()
     }
   },
@@ -30,7 +30,8 @@ var Progress = React.createClass({
   handleForm: function(event){
     this.setState({
       formView: '',
-      currentTask: event
+      currentTask: event,
+      start_time: this.state.time
     })
   },
   scheduleTodo: function(id){
@@ -38,15 +39,15 @@ var Progress = React.createClass({
     console.log("Schedule recurring event at " + this.state.time)
     $.ajax({
       type: 'POST',
-      url: 'api/tasks',
+      url: 'api/task_models/'+this.state.currentTask.id+'/task_instance/',
       data: {
-        task: {
+        task_instance: {
           start_time: this.state.time
         }
       },
       dataType: 'json',
       success: function(transport) {
-        console.log("Add success")
+        console.log("Schedule success")
         time: new Date()
       }.bind(this)
     })
@@ -66,12 +67,12 @@ var Progress = React.createClass({
     var todos = this.state.todos
     var formView = this.state.formView
     var progressBars = todos.map(function (todo,index) {
-      return <Pbar activity={todo} key={index}/>
-    })
+      return <Pbar activity={todo} schedule={this.handleForm} key={index}/>
+    }.bind(this))
     return (
       <div id="progress">
         <div id="scheduleRecurring" className={formView}>
-          <h1>{this.state.currentTask.time}</h1>
+          <h3>{this.state.currentTask.description}</h3>
           <form action="" method="POST">
             <input type="datetime-local" onChange={this.handleStartTime}/>
             <button type="button" className="btn btn-default" onClick={this.scheduleTodo}>Schedule</button>

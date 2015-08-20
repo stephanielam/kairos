@@ -13,14 +13,15 @@ var CalItem = React.createClass({
       temp = "",
       start = null
     }
-    console.log("PATCH /api/tasks/"+this.props.todo.id)
+    console.log('PATCH api/task_models/'+this.props.todo.id+'/task_instances/'+this.props.todo.task_instance_id)
     $.ajax({
       // TODO
       type: 'PATCH',
-      url: 'api/tasks/'+this.props.todo.id,
+      url: 'api/task_models/'+this.props.todo.id+'/task_instances/'+this.props.todo.task_instance_id,
       data: {
-        task: {
-          starts_at: start
+        task_instance: {
+          starts_at: start,
+          task_model_id: this.props.todo.id
         }
       },
       dataType: 'json',
