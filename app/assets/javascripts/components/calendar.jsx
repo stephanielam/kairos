@@ -4,11 +4,9 @@
 var Calendar = React.createClass({
   componentDidMount: function(){
     this.timer = setInterval(function(){
-    console.log("Load calendar")
     var dateurl = (this.state.date.getFullYear() + "-" +  
       ("0" + (this.state.date.getMonth() + 1)).slice(-2)+ "-" + 
       this.state.date.getDate())
-    console.log("Show cal for " + dateurl)
 
       $.ajax({
         type: 'GET',
@@ -27,18 +25,13 @@ var Calendar = React.createClass({
           this.setState({
             todos: todo_data,
             array: temp
-          })        
+          })
+        console.log("Show cal for " + dateurl)
         }.bind(this)
       })
-    }.bind(this), 600);
+    }.bind(this), 250);
   }, componentWillUnmount: function () {
     clearInterval(this.timer);
-  },
-  reload: function(){
-    console.log("reload")
-    setInterval(function() {
-      this.componentDidMount()
-    }, 1000);
   },
   getInitialState: function(){
     return {
@@ -55,7 +48,6 @@ var Calendar = React.createClass({
     this.setState({
       date: prevDate,
     })
-    this.componentDidMount()
   },
 
   forward: function(event){
@@ -64,7 +56,6 @@ var Calendar = React.createClass({
     this.setState({
       date: nextDate
     })
-    this.componentDidMount()
   },
 
   today: function(event){
@@ -72,7 +63,6 @@ var Calendar = React.createClass({
     this.setState({
       date: today
     })
-    this.componentDidMount()
   },
   handleTodo: function(event){
     console.log("POST /todo/:id (edit/add)  calendar")
