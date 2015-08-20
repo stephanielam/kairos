@@ -6,20 +6,24 @@ class Api::TaskInstancesController < ApplicationController
   end
 
   def calendar
-    task_instances = TaskModel.find_by_sql(
-      "SELECT task_models.id, task_instances.id AS task_instance_id, date(starts_at) AS task_instance_day, description, CAST(strftime('%H', starts_at) AS INT) AS start_time " +
-      "FROM task_models " +
-      "LEFT OUTER JOIN task_instances ON task_instances.task_model_id = task_instances.id " +
-      "WHERE (starts_at IS NOT NULL) " +
-      "GROUP BY task_models.id"
-    )
-    task_instances = TaskInstanceHelper.sort_by_date(task_instances, params[:date_to_format])
-    render json: task_instances.to_json
+    scheduled_task_instances = TaskInstance.includes(:task_model).scheduled
+    scheduled_task_instances_on_date = TaskInstanceHelper.filter_by_date(scheduled_task_instances, params[:date_to_format])
+    calendar = []
+    scheduled_task_instances_on_date.each do |task_instance|
+      task_instance_object = {
+        task_model_id: task_instance.task_model.id,
+        task_instance_id: task_instance.id,
+        description: task_instance.task_model.description,
+        task_instance_day: task_instance.starts_at.strftime("%F")
+      }
+      calendar.push(task_instance_object)
+    end
+    render json: calendar.to_json
   end
 
   def create
-    task = TaskInstance.new(task_params)
-    if TaskInstance.save
+    task = TaskInstance.new(task_instance_params)
+    if task.save
       render json: task
     else
       render json: get_resource.errors, status: :unprocessable_entity
@@ -28,7 +32,7 @@ class Api::TaskInstancesController < ApplicationController
 
   def show
     task = TaskInstance.find(params[:id])
-    render json: task
+      render json: task
   end
 
   def update
@@ -36,7 +40,7 @@ class Api::TaskInstancesController < ApplicationController
     if task.update(task_instance_params)
       render json: task
     else
-    render json: TaskInstance.errors, status: :unprocessable_entity
+      render json: TaskInstance.errors, status: :unprocessable_entity
     end
   end
 

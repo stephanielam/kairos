@@ -15,20 +15,21 @@ class Api::TaskModelsController < ApplicationController
     )
     render json: task_models.to_json
   end
- # * 100) AS percent
+
   def progress
-    task_models = TaskModel.find_by_sql(
-      "SELECT task_models.id, description, " +
-      "(CAST(COUNT(task_instances.task_model_id) AS FLOAT)), CAST(task_models.repeat_times AS FLOAT) " +
-      "FROM task_models " +
-      "LEFT OUTER JOIN task_instances ON task_instances.task_model_id = task_models.id " +
-      "WHERE repeat_times IS NOT NULL " +
-      "GROUP BY task_models.id"
-    )
-    render json: task_models.to_json
+    repeating_task_models = TaskModel.includes(:task_instances).repeating
+    progress = []
+    repeating_task_models.each do |task_model|
+      task_model_object = {
+        id: task_model.id,
+        description: task_model.description
+      }
+      completed_tasks_count = task_model.task_instances.completed.count
+      task_model_object[:percent] = (completed_tasks_count.to_f / task_model.repeat_times.to_f * 100.0).to_i
+      progress.push(task_model_object)
+    end
+    render json: progress.to_json
   end
-
-
 
   def create
     task = TaskModel.new(task_model_params)
