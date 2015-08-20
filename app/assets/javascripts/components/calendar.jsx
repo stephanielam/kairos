@@ -30,7 +30,7 @@ var Calendar = React.createClass({
           })        
         }.bind(this)
       })
-    }.bind(this), 100);
+    }.bind(this), 600);
   }, componentWillUnmount: function () {
     clearInterval(this.timer);
   },
