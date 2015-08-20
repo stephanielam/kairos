@@ -3,7 +3,7 @@
 var CalItem = React.createClass({
   getInitialState: function(){
     return {
-      status: ""
+      status: this.props.history
     }
   }, 
   handleCheck: function(id){
