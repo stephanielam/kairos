@@ -18,8 +18,8 @@ class Api::TaskInstancesController < ApplicationController
   end
 
   def create
-    task = TaskInstance.new(task_params)
-    if TaskInstance.save
+    task = TaskInstance.new(task_instance_params)
+    if task.save
       render json: task
     else
       render json: get_resource.errors, status: :unprocessable_entity
@@ -28,21 +28,21 @@ class Api::TaskInstancesController < ApplicationController
 
   def show
     task = TaskInstance.find(params[:id])
-    render json: task
+      render json: task
   end
 
   def update
     task = TaskInstance.find(params[:id])
-    if TaskInstance.update(task_params)
+    if task.update(task_instance_params)
       render json: task
     else
-    render json: TaskInstance.errors, status: :unprocessable_entity
+      render json: TaskInstance.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
     task = TaskInstance.find(params[:id])
-    TaskInstance.destroy
+    task.destroy
     head :no_content
   end
 
