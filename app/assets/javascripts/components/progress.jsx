@@ -3,7 +3,8 @@
 
 var Progress = React.createClass({
   componentDidMount: function(){
-    // GET  /tasks/?recurring=true
+    console.log("Load progress")
+    this.timer = setInterval(function(){
     $.ajax({
       type: 'GET',
       url: 'api/progress',
@@ -13,41 +14,46 @@ var Progress = React.createClass({
         })
       }.bind(this)
     })
+    }.bind(this), 100);
+  },
+    componentWillUnmount: function () {
+    clearInterval(this.timer);
   },
   getInitialState: function(){
     return {
       todos: [],
       currentTask: '',
-      formView: '',
-      time: new Date()
+      formView: 'hidden',
+      date: new Date()
     }
   },
   handleStartTime: function(e){
     this.setState({
-      time: e.target.value
+      date: e.target.value
     })
   },
   handleForm: function(event){
     this.setState({
       formView: '',
-      currentTask: event
+      currentTask: event,
     })
   },
   scheduleTodo: function(id){
     // TODO: 
-    console.log("Schedule recurring event at " + this.state.time)
+    console.log("Schedule recurring event at " + this.state.date)
     $.ajax({
       type: 'POST',
-      url: 'api/tasks',
+      url: 'api/task_models/'+this.state.currentTask.id+'/task_instances',
       data: {
-        task: {
-          start_time: this.state.time
+        task_instance: {
+          task_model_id: this.state.currentTask.id,
+          starts_at: this.state.date
         }
       },
       dataType: 'json',
       success: function(transport) {
-        console.log("Add success")
-        time: new Date()
+        console.log("Schedule success")
+        date: new Date()
       }.bind(this)
     })
     this.setState({
@@ -57,23 +63,22 @@ var Progress = React.createClass({
   cancel: function(){
     console.log("cancel")
     this.setState({
-      currentTask: null,
       formView: 'hidden',
-      time: new Date()
+      date: new Date()
     })
   },
   render: function(){
     var todos = this.state.todos
     var formView = this.state.formView
     var progressBars = todos.map(function (todo,index) {
-      return <Pbar activity={todo} key={index}/>
-    })
+      return <Pbar activity={todo} schedule={this.handleForm} key={index}/>
+    }.bind(this))
     return (
       <div id="progress">
         <div id="scheduleRecurring" className={formView}>
-          <h1>{this.state.currentTask.time}</h1>
+          <h3>{this.state.currentTask.description}</h3>
           <form action="" method="POST">
-            <input type="datetime-local" onChange={this.handleStartTime}/>
+            <input type="datetime-local" placeholder={this.state.date} onChange={this.handleStartTime}/>
             <button type="button" className="btn btn-default" onClick={this.scheduleTodo}>Schedule</button>
             <button type="button" className="btn btn-default" onClick={this.cancel}>Cancel</button>
           </form>

@@ -32,6 +32,7 @@ h2:hover {
   color: white;
   text-shadow: -1px 0px 10px rgb(1, 163, 165);
 }
+
 .navbar {
   background: url("../../images/background2.jpg");
   background-color: black;
@@ -100,7 +101,7 @@ h2:hover {
   opacity: 0.5;
   color: white;
   background: rgba(41, 41, 41, 0.3);
-  padding: 30px;
+  padding: 10px;
   width: 400px;
   border: 3px dashed rgba(41, 41, 41, 0.2);
   margin: 10px;
@@ -113,6 +114,12 @@ h2:hover {
 
 .hover-area:hover {
   opacity: 1;
+}
+
+#braindump {
+  float: left;
+  width: 400px;
+  padding: 20px;
 }
 
 #addNew {
@@ -134,13 +141,12 @@ h2:hover {
 #addNew button {
   display: block;
   margin: 0 auto;
-
 }
 
-#braindump {
-  float: left;
-  width: 400px;
-  padding: 20px;
+
+#addNew h3 {
+  display: inline;
+  margin: 0px 3px 0px 10px;
 }
 
 #todo-scroll{
@@ -173,14 +179,12 @@ h2:hover {
 
 #scheduleRecurring {
   border-radius: 20px;
-  padding: 10px;
-  background: rgba(233, 234, 216, 0.85);
-  height: 120px;
+  background: rgba(233, 234, 216, 0.95);
   width: 220px;
   text-align: center;
   position: fixed;
   top: 10px;
-  left: 620px;
+  left: 42%;
   z-index: 2;
   margin: 0 auto;
   /*opacity: 0;*/
@@ -206,6 +210,7 @@ h2:hover {
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 10px;
+  font-family: Helvetica;
 }
 
 
@@ -469,8 +474,10 @@ p {
   top: 0;
   left: 0;
   font-size: 35px;
-  color: #C9DDBA;
+  color: #D4E5D5;
   text-shadow: 0 0 5px rgba(16, 16, 16, 0.37);
+  font-family: Helvetica;
+  
 }
 
 .month-short {
@@ -484,7 +491,7 @@ p {
 
 .year {
   top: 53px;
-  color: #F8E6BE;
+  color: #F0EAD2;
   left: 60px;
   font-size: 27px;
   rotation: -90deg !important;

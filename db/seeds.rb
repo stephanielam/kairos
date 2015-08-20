@@ -114,6 +114,7 @@ TaskModel.create({
 TaskInstance.create({
   task_model_id:11
   })
+<<<<<<< HEAD
 
 TaskModel.create({
   description: 'Laundry Day'
@@ -166,3 +167,5 @@ TaskInstance.create({
 
 
 
+=======
+>>>>>>> master

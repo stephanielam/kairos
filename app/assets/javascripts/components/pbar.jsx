@@ -13,7 +13,6 @@ var Pbar = React.createClass({
     console.log("subtract recurrence")
   },
   show: function(id){
-    console.log(this.props.activity.description)
     this.props.schedule(id)
   },
   render: function(){
@@ -38,7 +37,8 @@ var Pbar = React.createClass({
         <h2>{activity.description}
         </h2>
         <div className="progress">
-          <div className={"progress-bar progress-bar-striped active progress-bar-"+status} role="progressbar" style={pbarStyles}>
+          <div className={"progress-bar progress-bar-striped active progress-bar-"+status} role="progressbar" 
+                          style={pbarStyles} aria-valuemin="0" aria-valuemax="100">
           {activity.percent}%
           </div>
           

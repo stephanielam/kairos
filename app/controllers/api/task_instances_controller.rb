@@ -14,7 +14,8 @@ class Api::TaskInstancesController < ApplicationController
         task_model_id: task_instance.task_model.id,
         task_instance_id: task_instance.id,
         description: task_instance.task_model.description,
-        task_instance_day: task_instance.starts_at.strftime("%F")
+        task_instance_day: task_instance.starts_at.strftime("%F"),
+        start_time: task_instance.starts_at.strftime("%H").to_i
       }
       calendar.push(task_instance_object)
     end

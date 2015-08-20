@@ -8,24 +8,24 @@ var CalItem = React.createClass({
   }, 
   handleCheck: function(id){
     var temp = "done"
-    var start = new Date()
+    var now = new Date()
     if (this.state.status == "done") {
       temp = "",
-      start = null
+      now = null
     }
-    console.log("PATCH /api/tasks/"+this.props.todo.id)
+    // console.log('PATCH api/task_models/'+this.props.todo.id+'/task_instances/'+this.props.todo.task_instance_id)
     $.ajax({
-      // TODO
       type: 'PATCH',
-      url: 'api/tasks/'+this.props.todo.id,
+      url: 'api/task_models/'+this.props.todo.id+'/task_instances/'+this.props.todo.task_instance_id,
       data: {
-        task: {
-          starts_at: start
+        task_instance: {
+          completed_at: now,
+          task_model_id: this.props.todo.id
         }
       },
       dataType: 'json',
       success: function(transport) {
-        console.log("Set '" + this.props.todo.description + "' start time: " + start)
+        console.log("Marked '" + this.props.todo.description + "' as completed_at " + now)
         this.setState({
           status: temp,
         })
