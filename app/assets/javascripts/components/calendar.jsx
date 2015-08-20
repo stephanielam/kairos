@@ -80,13 +80,17 @@ var Calendar = React.createClass({
     }
     var table = hours.map(function (hour, index) {
       var name = ''
+      var history = ''
       if (array[index]){
         name = array[index].description
+        if (array[index].completed_at){
+          history = 'done'
+        }
       }
       if (index > start && index < end) {
         return <tr><td style={columnStyle} >{hour}</td>
         <td className="todo" key={index}>
-        <CalItem todo={array[index]} id={index} key={index} name={name}/>
+        <CalItem todo={array[index]} id={index} key={index} name={name} history={history}/>
         </td>
         </tr>
       }
