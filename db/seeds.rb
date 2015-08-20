@@ -86,3 +86,34 @@ TaskModel.create({          #9
 TaskInstance.create({
   task_model_id: 9
   })
+
+TaskModel.create({
+  description: 'Pump Iron',
+  repeat_times: 3
+  })
+
+TaskInstance.create({
+  task_model_id: 10,
+  starts_at: '2015-08-23T09:00:00.000Z'
+  })
+
+TaskInstance.create({
+  task_model_id: 10,
+  starts_at: '2015-08-25T09:00:00.000Z'
+  })
+
+TaskInstance.create({
+  task_model_id: 10,
+  starts_at: '2015-08-27T09:00:00.000Z'
+  })
+
+TaskModel.create({
+  description: 'Need to figure my fucking life out'
+  })
+
+TaskInstance.create({
+  task_model_id:11
+  })
+
+
+
