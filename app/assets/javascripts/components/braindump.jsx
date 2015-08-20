@@ -22,8 +22,8 @@ var Braindump = React.createClass({
       currentTask: '',
       formView: 'hidden',
       description: '',
-      time: '',
-      recurrences: '',
+      time: new Date(),
+      recurrences: 5,
     }
   },
   updateDescription: function(value){
@@ -65,24 +65,26 @@ var Braindump = React.createClass({
     this.setState({
       formView: 'hidden'
     })
+    this.componentDidMount()
   },
   clear: function(){
     console.log("Clear completed")
     this.componentDidMount()
   },
   scheduleOnce: function(object){
-    console.log("PATCH /todo/"+this.state.currentTask.id)
+    console.log('POST api/task_models/'+this.state.currentTask.id+'/task_instances')
     $.ajax({
-      type: 'PATCH',
-      url: 'api/task_model/'+this.state.currentTask.id,
+      type: 'POST',
+      url: 'api/task_models/'+this.state.currentTask.id+'/task_instances',
       data: {
-        task_model: {
-          repeat_times: this.state.recurrences
+        task_instance: {
+          task_model_id: this.state.currentTask.id,
+          starts_at: this.state.time
         }
       },
       dataType: 'json',
       success: function(transport) {
-        console.log(this.state.currentTask.description+"schedule success")
+        console.log(this.state.currentTask.description+"schedule success at " + this.state.time)
       }.bind(this)
     })
     this.setState({
@@ -101,7 +103,7 @@ var Braindump = React.createClass({
       },
       dataType: 'json',
       success: function(transport) {
-        console.log(this.state.currentTask.description+"schedule success")
+        console.log("Set " + this.state.currentTask.description+" recurrense to "+this.state.recurrences)
       }.bind(this)
     })
 
@@ -141,7 +143,7 @@ var Braindump = React.createClass({
           <div className="hover-area">
             <h1>{this.state.currentTask.description}</h1>
             <form action="" method="POST">
-              <input id="times" type="range" min="1" max="10" onChange={this.handleRecurrence}></input><p>/week</p>
+              <input id="times" type="range" min="1" max="10" onChange={this.handleRecurrence}></input><p><h3>{this.state.recurrences}</h3>/week</p>
               <button type="button" className="btn btn-default" onClick={this.scheduleRecurring}>Schedule Recurring</button>
             </form>
           </div>

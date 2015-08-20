@@ -3,7 +3,8 @@
 
 var Progress = React.createClass({
   componentDidMount: function(){
-    // GET  /tasks/?recurring=true
+    console.log("Load progress")
+    this.timer = setInterval(function(){
     $.ajax({
       type: 'GET',
       url: 'api/progress',
@@ -13,42 +14,46 @@ var Progress = React.createClass({
         })
       }.bind(this)
     })
+    }.bind(this), 100);
+  },
+    componentWillUnmount: function () {
+    clearInterval(this.timer);
   },
   getInitialState: function(){
     return {
       todos: [],
       currentTask: '',
       formView: 'hidden',
-      time: new Date()
+      date: new Date()
     }
   },
   handleStartTime: function(e){
     this.setState({
-      time: e.target.value
+      date: e.target.value
     })
   },
   handleForm: function(event){
     this.setState({
       formView: '',
       currentTask: event,
-      start_time: this.state.time
     })
   },
   scheduleTodo: function(id){
     // TODO: 
-    console.log("Schedule recurring event at " + this.state.time)
+    console.log("Schedule recurring event at " + this.state.date)
     $.ajax({
       type: 'POST',
-      url: 'api/task_models/'+this.state.currentTask.id+'/task_instance/',
+      url: 'api/task_models/'+this.state.currentTask.id+'/task_instances',
       data: {
         task_instance: {
-          start_time: this.state.time
+          task_model_id: this.state.currentTask.id,
+          starts_at: this.state.date
         }
       },
       dataType: 'json',
       success: function(transport) {
         console.log("Schedule success")
-        time: new Date()
+        date: new Date()
       }.bind(this)
     })
     this.setState({
@@ -58,9 +63,8 @@ var Progress = React.createClass({
   cancel: function(){
     console.log("cancel")
     this.setState({
-      currentTask: null,
       formView: 'hidden',
-      time: new Date()
+      date: new Date()
     })
   },
   render: function(){
@@ -74,7 +78,7 @@ var Progress = React.createClass({
         <div id="scheduleRecurring" className={formView}>
           <h3>{this.state.currentTask.description}</h3>
           <form action="" method="POST">
-            <input type="datetime-local" onChange={this.handleStartTime}/>
+            <input type="datetime-local" placeholder={this.state.date} onChange={this.handleStartTime}/>
             <button type="button" className="btn btn-default" onClick={this.scheduleTodo}>Schedule</button>
             <button type="button" className="btn btn-default" onClick={this.cancel}>Cancel</button>
           </form>

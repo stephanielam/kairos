@@ -37,7 +37,8 @@ var Pbar = React.createClass({
         <h2>{activity.description}
         </h2>
         <div className="progress">
-          <div className={"progress-bar progress-bar-striped active progress-bar-"+status} role="progressbar" style={pbarStyles}>
+          <div className={"progress-bar progress-bar-striped active progress-bar-"+status} role="progressbar" 
+                          style={pbarStyles} aria-valuemin="0" aria-valuemax="100">
           {activity.percent}%
           </div>
           
