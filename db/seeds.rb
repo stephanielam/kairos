@@ -1,17 +1,41 @@
 TaskModel.create({          #1
   description: 'Weekly manscaping',
-  repeat_times: 5,
-  })
+  repeat_times: 7,
+})
 
 TaskInstance.create({
   task_model_id: 1,
   starts_at: '2015-08-19T08:00:00.000Z',
   completed_at: '2015-08-19T16:00:00.000Z'
-  })
+})
 
 TaskInstance.create({
   task_model_id: 1,
-  starts_at: '2015-08-20T09:00:00.000Z'
+  starts_at: '2015-08-19T08:00:00.000Z',
+  completed_at: '2015-08-19T16:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id: 1,
+  starts_at: '2015-08-19T08:00:00.000Z',
+  completed_at: '2015-08-19T16:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id: 1,
+  starts_at: '2015-08-19T08:00:00.000Z',
+  completed_at: '2015-08-19T16:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id: 1,
+  starts_at: '2015-08-19T08:00:00.000Z',
+  completed_at: '2015-08-19T16:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id: 1,
+  starts_at: '2015-08-20T08:00:00.000Z'
   })
 
 TaskModel.create({          #2
@@ -25,17 +49,41 @@ TaskInstance.create({
   })
 
 TaskModel.create({          #3
-  description: 'Salsa Dancing',
+  description: 'Work on Portfolio',
   repeat_times: 1
   })
 
 TaskInstance.create({
+  task_model_id:3,
+  starts_at: '2015-08-27T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+  })
+
+TaskInstance.create({
+  task_model_id:3,
+  starts_at: '2015-08-27T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+  })
+
+TaskInstance.create({
+  task_model_id:3,
+  starts_at: '2015-08-27T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+  })
+
+TaskInstance.create({
+  task_model_id:3,
+  starts_at: '2015-08-27T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+  })
+
+TaskInstance.create({
   task_model_id: 3,
-  starts_at: '2015-08-20T18:00:00.000Z'
+  starts_at: '2015-08-20T14:00:00.000Z'
   })
 
 TaskModel.create({          #4
-  description: 'Have to meet ScarJo someday.  It is a must!'
+  description: 'Demo Day!'
   })
 
 TaskInstance.create({
@@ -48,7 +96,7 @@ TaskModel.create({          #5
 
 TaskInstance.create({
   task_model_id: 5,
-  starts_at: '2015-08-19T09:00:00.000Z'
+  starts_at: '2015-08-19T11:00:00.000Z'
   })
 
 TaskModel.create({          #6
@@ -56,8 +104,7 @@ TaskModel.create({          #6
   })
 
 TaskInstance.create({
-  task_model_id: 6,
-  starts_at: '2015-08-20T09:00:00.000Z'
+  task_model_id: 6
   })
 
 TaskModel.create({          #7
@@ -66,78 +113,133 @@ TaskModel.create({          #7
 
 TaskInstance.create({
   task_model_id: 7,
-  starts_at: '2015-08-21T09:00:00.000Z'
+  starts_at: '2015-08-20T09:00:00.000Z'
   })
 
 TaskModel.create({          #8
-description: 'Found Billion Dollar Start Up'
+  description: 'Salsa Lessons'
   })
 
 TaskInstance.create({
   task_model_id: 8,
-  starts_at: '2015-08-22T09:00:00.000Z'
+  starts_at: '2015-08-20T11:00:00.000Z'
   })
 
 TaskModel.create({          #9
-  description: 'Go Fishing',
-  repeat_times: 2,
-  })
+  description: 'Found Billion Dollar Start Up',
+  repeat_times: 10,
+})
 
 TaskInstance.create({
-  task_model_id: 9
-  })
+  task_model_id: 9,
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id: 9,
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id: 9,
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+})
+TaskInstance.create({
+  task_model_id: 9,
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+})
+
+
+TaskInstance.create({
+  task_model_id: 9,
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id: 9,
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id: 9,
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id: 9,
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+})
 
 TaskModel.create({
   description: 'Pump Iron',
-  repeat_times: 3
+  repeat_times: 7
   })
 
 TaskInstance.create({
   task_model_id: 10,
-  starts_at: '2015-08-23T09:00:00.000Z'
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
   })
 
 TaskInstance.create({
   task_model_id: 10,
-  starts_at: '2015-08-25T09:00:00.000Z'
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
   })
 
 TaskInstance.create({
   task_model_id: 10,
-  starts_at: '2015-08-27T09:00:00.000Z'
+  starts_at: '2015-08-25T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
+  })
+
+TaskInstance.create({
+  task_model_id: 10,
+  starts_at: '2015-08-27T15:00:00.000Z'
   })
 
 TaskModel.create({
-  description: "Attend Jeremy Shaki's Bar Mitzvah--ZING!"
+  description: "Attend Shaki's Bar Mitzvah-ZING!"
   })
+
 
 TaskInstance.create({
   task_model_id:11
   })
 
 TaskModel.create({
-  description: 'Laundry Day'
-  })
+  description: 'Do Laundry'
+})
+
+TaskModel.create({
+  description: "Go grocery shopping"
+})
 
 TaskInstance.create({
   task_model_id:12,
   starts_at: '2015-08-27T09:00:00.000Z',
-  completed_at: '2015-08-27T09:00:00.000Z'
-
   })
 
 TaskModel.create({
-  description: 'Weekly cleaning'
+  description: 'Clean Apartment'
   })
 
 TaskInstance.create({
   task_model_id:13,
-  starts_at: '2015-08-27T09:00:00.000Z',
+  starts_at: '2015-08-27T14:00:00.000Z',
   completed_at: '2015-08-27T09:00:00.000Z'
   })
 
 TaskModel.create({
-  description: 'Call Mama',
+  description: 'Call Mama ♥',
   })
 
 TaskInstance.create({
@@ -145,12 +247,18 @@ TaskInstance.create({
   })
 
 TaskModel.create({
-  description: 'Plan Euro 2016 trip'
+  description: 'Go Fishing'
   })
 
+TaskModel.create({
+  description: 'Plan Euro 2016 trip',
+  repeat_times: 9
+})
+
 TaskInstance.create({
-  task_model_id:15,
-  starts_at: '2015-08-21T18:00:00.000Z',
+  task_model_id:17,
+  starts_at: '2015-08-27T14:00:00.000Z',
+  completed_at: '2015-08-27T09:00:00.000Z'
   })
 
 TaskModel.create({
@@ -158,6 +266,37 @@ TaskModel.create({
   })
 
 TaskInstance.create({
-  task_model_id:16,
-  starts_at: '2015-08-21T18:00:00.000Z'
+  task_model_id:17,
   })
+
+TaskModel.create({
+  description: 'Buy presents for Stephanie'
+})
+
+TaskModel.create({
+  description: 'Lunch With Rosy'
+})
+
+TaskInstance.create({
+  task_model_id:18,
+  starts_at: '2015-08-27T07:00:00.000Z'
+})
+
+TaskInstance.create({
+  task_model_id:19,
+})
+
+
+TaskInstance.create({
+  task_model_id:20,
+  starts_at: '2015-08-20T12:00:00.000Z'
+})
+
+TaskModel.create({
+  description: 'Cook dinner'
+})
+
+TaskModel.create({
+  description: 'Meet ScarJo. It is a must.'
+})
+
